@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR generator</title>
+    <link rel="stylesheet" href="dist/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <style>
+    body {
+      text-align: center;
+      background: #292626;
+    }
+    input {
+      display: block;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 40vh;
+      height: 100%;
+      padding: 5px;
+      background-color: #e9e7e7;
+      outline: none;
+      border-radius: 2px;
+    }
+    .box {
+      margin-left: 5vh;
+      margin-right: 5vh;
+      margin-top: 20vh;
+      position: relative;
+      background-color: rgb(96, 96, 96);
+      border-radius: 4px;
+    }
+    #generate {
+      background-color: rgb(14, 0, 104);
+      padding: 10px;
+      color: rgb(208, 208, 208);
+      margin: 15px;
+      border-radius: 4px;
+    }
+    #generate:hover {
+      background-color: #1e1e1e;
+      transform: scale(1.01);
+    }
+    .text {
+      font-size: larger;
+      font-weight: 500;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      padding: 10px;
+    }
+    img {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      size: 50vh;
+    }
+  </style>
+  <body>
+    <div class="flex-col box rounded-md">
+      <p class="text">Enter text or link</p>
+      <input id="input" type="text" placeholder="text or URL" />
+
+      <div id="imgbox">
+        <img class="justify-center" src="" id="qrimage" />
+      </div>
+      <button
+        onclick="generateQR()"
+        id="generate"
+        class="w-auto p-4 bg-gray-500"
+      >
+        Generate QR code
+      </button>
+    </div>
+
+    <div
+      style="
+        background-color: #1e1e1e;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 15px;
+        color: #505050;
+      "
+      class="text-center justify-center p-5 text-gray-300 font-semibold"
+    >
+      created and designed by Alfa 2023&copy;
+      <a href="https://github.com/zeiadsalhin"
+        ><i class="fa-brands fa fa-xl fa-github-square"></i
+      ></a>
+    </div>
+    <script>
+      let imgbox = document.getElementById("imgbox");
+      let qrimage = document.getElementById("qrimage");
+      let inputtext = document.getElementById("input");
+
+      function generateQR() {
+        qrimage.src =
+          "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+          inputtext.value;
+      }
+    </script>
+  </body>
+</html>
